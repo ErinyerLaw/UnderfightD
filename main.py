@@ -16,7 +16,8 @@ def attackm(k):
             m.append([randint(1, 150), 0])
     return m
 
-def musicsetter(bosshappyflags,bosssadflags):
+
+def musicsetter(bosshappyflags, bosssadflags):
     if bosshappyflags == 0 and bosssadflags == 0:
         pygame.mixer.music.load('Music/mus_menu0.ogg')
         pygame.mixer.music.play(-1)
@@ -40,9 +41,7 @@ def musicsetter(bosshappyflags,bosssadflags):
         pygame.mixer.music.play(-1)
 
 
-
-
-def fpsset(playerslideflag,choosefase):
+def fpsset(playerslideflag, choosefase):
     '''
     :param playerslideflag: bool
     :param choosefase: bool
@@ -57,6 +56,7 @@ def fpsset(playerslideflag,choosefase):
     else:
         return 'Wrong input'
 
+
 def hp_decor(hp):
     '''
     :param hp:int
@@ -66,6 +66,7 @@ def hp_decor(hp):
         return 0
     else:
         return hp
+
 
 class Boss:
     def __init__(self, hp, anim, attacks, phrasesF, attack, act, actT, actF, actleft, actright, attack_speed, strength):
@@ -96,6 +97,7 @@ class Boss:
         self.actright = actright
         self.attack_speed = attack_speed
         self.strength = strength
+
 
 # Параметры
 FPS = 60
@@ -133,25 +135,36 @@ bosssadflags_check = 0
 boss1attacks = attackm(200)
 boss2attacks = attackm(200)
 boss3attacks = attackm(200)
-boss2phrasesF = [ 'ARHGR', 'STOP IT', 'I`M GONNA BEAT YOU UP', 'DAMN IT']
-boss2actT = ['You interferred me!', 'I was hammering nails', 'Yes? What is it?', 'OH THATS VERY GOOD']
-boss2actF = ['APESTAS', '¿A QUIEN LLAMASTE PERRO?','I CAN READ MINDS','ARGH UN TONTO' ]
-boss2actsleft = ['Why are you  mad?', 'Un perro ;D', 'I have something to calm down you', 'It`s a vinyl record of Linkin park']
-boss2actsright = ['Tu es rojo como un tomate', 'From what?', '(Where did she even hammer them?)', 'Un sedante para perros xD']
+boss2phrasesF = ['ARHGR', 'STOP IT', 'I`M GONNA BEAT YOU UP', 'DAMN IT']
+boss2actT = ['You interferred me!', 'I was hammering nails',
+             'Yes? What is it?', 'OH THATS VERY GOOD']
+boss2actF = ['APESTAS', '¿A QUIEN LLAMASTE PERRO?',
+             'I CAN READ MINDS', 'ARGH UN TONTO']
+boss2actsleft = ['Why are you  mad?', 'Un perro ;D',
+                 'I have something to calm down you', 'It`s a vinyl record of Linkin park']
+boss2actsright = ['Tu es rojo como un tomate', 'From what?',
+                  '(Where did she even hammer them?)', 'Un sedante para perros xD']
 boss2act = [[1, 0], [0, 1], [1, 0], [1, 0]]
-boss3phrasesF = [ 'OoooOOoo', 'DoN`t BeAt mE', 'StOp iT', 'WoWowWo :(']
-boss3actT = ['I am thirsty', 'It would be very nice', 'I see a bottle in your pocket', 'OH THATS VERY GOOD']
-boss3actF = ['Seems like that', 'Que duro...','Oh no','Ohhh nooo...' ]
-boss3actsleft = ['Hey, what`s wrong?', 'Flower don`t talk', 'So you need water...', 'Oh right,take it']
-boss3actsright = ['A big talking flower?', 'Can I help you?', 'Maybe I should eat you', 'I`ll need it to wash you down >:)']
+boss3phrasesF = ['OoooOOoo', 'DoN`t BeAt mE', 'StOp iT', 'WoWowWo :(']
+boss3actT = ['I am thirsty', 'It would be very nice',
+             'I see a bottle in your pocket', 'OH THATS VERY GOOD']
+boss3actF = ['Seems like that', 'Que duro...', 'Oh no', 'Ohhh nooo...']
+boss3actsleft = ['Hey, what`s wrong?', 'Flower don`t talk',
+                 'So you need water...', 'Oh right,take it']
+boss3actsright = ['A big talking flower?', 'Can I help you?',
+                  'Maybe I should eat you', 'I`ll need it to wash you down >:)']
 boss3act = [[1, 0], [0, 1], [1, 0], [1, 0]]
-boss1phrasesF = ['Damn it...', 'Hey, why are you attacking me', 'Stop it','It isn`t cool.']
-boss1actT = ['Yes, mate', 'My moustache are feeling bad', 'I need some moustache potion', 'Great, thank you!']
-boss1actF = ['Bro, don`t bully me', 'You go away' ]
-boss1actsleft = ['Want to talk?', 'Go away', 'Oh, I used to have great moustache', 'I have one, take it']
-boss1actsright = ['You`re ugly', 'Something happened?', 'Your moustache are bad', 'So what?']
+boss1phrasesF = ['Damn it...',
+                 'Hey, why are you attacking me', 'Stop it', 'It isn`t cool.']
+boss1actT = ['Yes, mate', 'My moustache are feeling bad',
+             'I need some moustache potion', 'Great, thank you!']
+boss1actF = ['Bro, don`t bully me', 'You go away']
+boss1actsleft = ['Want to talk?', 'Go away',
+                 'Oh, I used to have great moustache', 'I have one, take it']
+boss1actsright = ['You`re ugly', 'Something happened?',
+                  'Your moustache are bad', 'So what?']
 boss1act = [[1, 0], [0, 1], [1, 0], [1, 0]]
-##########################Дисплей,картинки#####################################
+########################## Дисплей,картинки#####################################
 pygame.init()
 screen = pygame.display.set_mode((screenx, screeny))
 # заданы размеры окна игры
@@ -163,7 +176,7 @@ boss2attack = pygame.image.load('Sprites/Boss1/attack.png')
 boss1attack = pygame.image.load('Sprites/Boss2/attack.png')
 boss3attack = pygame.image.load('Sprites/Boss3/attack.png')
 pygame.display.set_icon(icon)
-#############################АНИМАЦИИ###############################################
+############################# АНИМАЦИИ###############################################
 pwalkup = [
     pygame.image.load('Sprites/PlayerAnimation/walkup1.png'),
     pygame.image.load('Sprites/PlayerAnimation/walkup2.png'),
@@ -208,40 +221,39 @@ boss1fight = [
     pygame.image.load('Sprites/Boss2/boss2sad.png'),
     pygame.image.load('Sprites/Boss2/boss2happy.png'),
     pygame.image.load('Sprites/Boss2/boss2dead.png')
-    ]
+]
 boss1menu = [
     pygame.image.load('Sprites/Boss2/boss2sadmenu.png'),
     pygame.image.load('Sprites/Boss2/boss2happymenu.png'),
     pygame.image.load('Sprites/Boss2/boss2deadmenu.png')
-    ]
+]
 boss3fight = [
     pygame.image.load('Sprites/Boss3/boss3sad.png'),
     pygame.image.load('Sprites/Boss3/boss3happy.png'),
     pygame.image.load('Sprites/Boss3/boss3dead.png')
-    ]
+]
 boss3menu = [
     pygame.image.load('Sprites/Boss3/boss3sadmenu.png'),
     pygame.image.load('Sprites/Boss3/boss3happymenu.png'),
     pygame.image.load('Sprites/Boss3/boss3deadmenu.png')
-    ]
+]
 # №№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№
 
 # Боссы
 boss1 = Boss(100, boss1fight, boss1attacks, boss1phrasesF, boss1attack,
              boss1act, boss1actT, boss1actF, boss1actsleft,
-             boss1actsright,2,10)
+             boss1actsright, 2, 10)
 boss2 = Boss(150, boss2fight, boss2attacks, boss2phrasesF, boss2attack,
              boss2act, boss2actT, boss2actF, boss2actsleft,
-             boss2actsright,3,15)
+             boss2actsright, 3, 15)
 boss3 = Boss(200, boss3fight, boss3attacks, boss3phrasesF, boss3attack,
              boss3act, boss3actT, boss3actF, boss3actsleft,
-             boss3actsright,4,20)
+             boss3actsright, 4, 20)
 # Переменные
 
 player = pwalkdown[0]
 myfont = pygame.font.Font('fonts/KdamThmorPro-Regular.ttf', 20)
 textsurface = myfont.render('Press E to start fight', True, 'white', 'black')
-
 
 
 def fight(
@@ -268,7 +280,8 @@ def fight(
     screen = pygame.display.set_mode((screenx, screeny))
     background = pygame.image.load('images/fightingbackground.png')
     battlewindow = pygame.image.load('images/battlewindow.webp')
-    attackblackwindow = pygame.image.load('Sprites/Battle/attackblackwindow.png')
+    attackblackwindow = pygame.image.load(
+        'Sprites/Battle/attackblackwindow.png')
     fightingwindow = pygame.image.load('images/fightingwindow.jpg')
     attackimage = boss.attack
     fightingplayer = pygame.image.load('Sprites/Battle/fightingplayer.webp')
@@ -333,11 +346,12 @@ def fight(
         if px == xplayer and py == yplayer:
             playerslideflag = 1
 
-        FPS = fpsset(playerslideflag,choosefase)
+        FPS = fpsset(playerslideflag, choosefase)
 
         # хитбоксы
 
-        battlebutton = pygame.draw.line(background, 'blue', (xplayer, yplayer + 14), (xplayer + 180, yplayer + 14), 40)
+        battlebutton = pygame.draw.line(
+            background, 'blue', (xplayer, yplayer + 14), (xplayer + 180, yplayer + 14), 40)
         actbutton = pygame.draw.line(background, 'blue', (xplayer + 200, yplayer + 14), (xplayer + 380, yplayer + 14),
                                      40)
         itembutton = pygame.draw.line(background, 'blue', (xplayer + 400, yplayer + 14), (xplayer + 580, yplayer + 14),
@@ -360,17 +374,28 @@ def fight(
 
         # атака босса правильным нажатием
         if battlechoose == 1 and choosefase == 0 and attacktry == 0:
-            blackbackground = pygame.draw.line(attackblackwindow, 'black', (0, 90), (600, 90), 190)
-            redline = pygame.draw.line(attackblackwindow, 'red', (300, 20), (300, 160), 20)
-            orangeline1 = pygame.draw.line(attackblackwindow, 'orange', (275, 30), (275, 150), 30)
-            orangeline2 = pygame.draw.line(attackblackwindow, 'orange', (325, 30), (325, 150), 30)
-            yellowline1 = pygame.draw.line(attackblackwindow, 'yellow', (240, 40), (240, 140), 40)
-            yellowline2 = pygame.draw.line(attackblackwindow, 'yellow', (360, 40), (360, 140), 40)
-            greenline1 = pygame.draw.line(attackblackwindow, 'green', (195, 50), (195, 130), 50)
-            greenline2 = pygame.draw.line(attackblackwindow, 'green', (405, 50), (405, 130), 50)
-            whiteline1 = pygame.draw.line(attackblackwindow, 'white', (135, 60), (135, 120), 70)
-            whiteline2 = pygame.draw.line(attackblackwindow, 'white', (465, 60), (465, 120), 70)
-            attackline = pygame.draw.line(attackblackwindow, (135, 0, 0), (attacklinex, 0), (attacklinex, 200), 3)
+            blackbackground = pygame.draw.line(
+                attackblackwindow, 'black', (0, 90), (600, 90), 190)
+            redline = pygame.draw.line(
+                attackblackwindow, 'red', (300, 20), (300, 160), 20)
+            orangeline1 = pygame.draw.line(
+                attackblackwindow, 'orange', (275, 30), (275, 150), 30)
+            orangeline2 = pygame.draw.line(
+                attackblackwindow, 'orange', (325, 30), (325, 150), 30)
+            yellowline1 = pygame.draw.line(
+                attackblackwindow, 'yellow', (240, 40), (240, 140), 40)
+            yellowline2 = pygame.draw.line(
+                attackblackwindow, 'yellow', (360, 40), (360, 140), 40)
+            greenline1 = pygame.draw.line(
+                attackblackwindow, 'green', (195, 50), (195, 130), 50)
+            greenline2 = pygame.draw.line(
+                attackblackwindow, 'green', (405, 50), (405, 130), 50)
+            whiteline1 = pygame.draw.line(
+                attackblackwindow, 'white', (135, 60), (135, 120), 70)
+            whiteline2 = pygame.draw.line(
+                attackblackwindow, 'white', (465, 60), (465, 120), 70)
+            attackline = pygame.draw.line(
+                attackblackwindow, (135, 0, 0), (attacklinex, 0), (attacklinex, 200), 3)
             attacklinex += linespeed
             if attackline.colliderect(blackbackground):
                 if attackline.colliderect(whiteline1) and pressed[pygame.K_SPACE]:
@@ -405,7 +430,7 @@ def fight(
                 attacktry = 1
         if bosshp <= 0:
             bossflag = 2
-            bosssay = battlefont.render('...',True,'white')
+            bosssay = battlefont.render('...', True, 'white')
             fightendcount += 1
             if fightendcount < 3:
                 pygame.mixer.music.load('Music/mus_f_saved.ogg')
@@ -420,9 +445,6 @@ def fight(
             py = startplayery
             if fightendcount > 400:
                 return 1
-
-
-
 
         # дальше написать чтобы при нажатии на пробел сносилось определенное кол-во хп в завис от прямоуг
 
@@ -441,9 +463,11 @@ def fight(
                 attacksk = 10 * battlefase
             attackcooldown += 1
             fightingwindowhitbox = pygame.draw.line(background, (66, 68, 90, 0),
-                                                    (fightingwindowx, fightingwindowy + 75),
+                                                    (fightingwindowx,
+                                                     fightingwindowy + 75),
                                                     (fightingwindowx + 150, fightingwindowy + 75), 150)
-            playerhitbox = pygame.draw.circle(background, 'black', (px + 13, py + 13), 14)
+            playerhitbox = pygame.draw.circle(
+                background, 'black', (px + 13, py + 13), 14)
 
             battlecount += 1
             if oncetp == 0:
@@ -463,9 +487,10 @@ def fight(
                 if bossattacks[attackcount][1] != 0 and bossattacks[attackcount][0] == 0:
                     attackhitbox = pygame.draw.line(screen, 'white', (
                         fightingwindowx + attackmove, fightingwindowy + boss1attacks[attackcount][1]),
-                                                    (fightingwindowx + attackmove,
-                                                     fightingwindowy + bossattacks[attackcount][1] + 5), 15)
-                    fightingwindow.blit(attackimage, (attackmove, bossattacks[attackcount][1]))
+                        (fightingwindowx + attackmove,
+                         fightingwindowy + bossattacks[attackcount][1] + 5), 15)
+                    fightingwindow.blit(
+                        attackimage, (attackmove, bossattacks[attackcount][1]))
 
                     if attackhitbox.colliderect(fightingwindowhitbox):
                         attackmove += attackmovespeed
@@ -478,10 +503,11 @@ def fight(
                 elif bossattacks[attackcount][0] != 0 and bossattacks[attackcount][1] == 0:
                     attackhitbox = pygame.draw.line(screen, 'white', (
                         fightingwindowx + bossattacks[attackcount][0], fightingwindowy - 5 + attackmove),
-                                                    (fightingwindowx + bossattacks[attackcount][0] + 5,
-                                                     fightingwindowy - 5 + attackmove), 15)
+                        (fightingwindowx + bossattacks[attackcount][0] + 5,
+                         fightingwindowy - 5 + attackmove), 15)
 
-                    fightingwindow.blit(attackimage, (bossattacks[attackcount][0], attackmove), )
+                    fightingwindow.blit(
+                        attackimage, (bossattacks[attackcount][0], attackmove), )
 
                     if attackhitbox.colliderect(fightingwindowhitbox):
                         attackmove += attackmovespeed
@@ -505,7 +531,7 @@ def fight(
                 actend = 0
                 # прописано на будущее
             # завершение боя кнопкой для теста
-            #admin button
+            # admin button
             if pressed[pygame.K_l]:
                 choosefase = 1
                 start_tp = 0
@@ -536,14 +562,16 @@ def fight(
                 if rightact[actcount][0] == 1:
                     attackmovespeed = 2
                     if actcount <= len(actT):
-                        bosssay = battlefont.render(actT[actcount], True, 'white')
+                        bosssay = battlefont.render(
+                            actT[actcount], True, 'white')
                     else:
                         bosssay = battlefont.render(actT[-1], True, 'white')
                     actcount += 1
                 else:
                     attackmovespeed = 4
                     if actcount <= len(actF):
-                        bosssay = battlefont.render(actF[actcount], True, 'white')
+                        bosssay = battlefont.render(
+                            actF[actcount], True, 'white')
                     else:
                         bosssay = battlefont.render(actF[-1], True, 'white')
 
@@ -554,22 +582,26 @@ def fight(
                 if rightact[actcount][1] == 1:
                     attackmovespeed = 2
                     if actcount <= len(actT):
-                        bosssay = battlefont.render(actT[actcount], True, 'white')
+                        bosssay = battlefont.render(
+                            actT[actcount], True, 'white')
                     else:
                         bosssay = battlefont.render(actT[-1], True, 'white')
                     actcount += 1
                 else:
                     attackmovespeed = 4
                     if battlefase <= len(actF):
-                        bosssay = battlefont.render(actF[actcount], True, 'white')
+                        bosssay = battlefont.render(
+                            actF[actcount], True, 'white')
                     else:
                         bosssay = battlefont.render(actF[-1], True, 'white')
         elif actchoose == 1 and choosefase == 0 and actend == 0:
-            bosssay = battlefont.render('It`s too late to try to fix something', True, 'white')
+            bosssay = battlefont.render(
+                'It`s too late to try to fix something', True, 'white')
             actend = 1
 
         if choosefase == 1 and playerslideflag == 1:
-            playerhitbox = pygame.draw.circle(background, 'white', (px + 13, py + 10), 18)
+            playerhitbox = pygame.draw.circle(
+                background, 'white', (px + 13, py + 10), 18)
             battlebutton = pygame.draw.line(background, 'blue', (xplayer, yplayer + 14), (xplayer + 180, yplayer + 14),
                                             40)
             actbutton = pygame.draw.line(background, 'blue', (xplayer + 200, yplayer + 14),
@@ -608,16 +640,18 @@ def fight(
                 choosefase = 0
 
         # battle_going приравнять к нулю когда бой прошел все фазы, если босс убит, менять картинку, если нет,
-        if playerhp<=0:
+        if playerhp <= 0:
             return 0
 
         # выбор фразы
         if choosefase == 0:
             if battlechoose == 1:
                 if battlefase < len(bossphrasesF):
-                    bosssay = battlefont.render(bossphrasesF[battlefase], True, 'white')
+                    bosssay = battlefont.render(
+                        bossphrasesF[battlefase], True, 'white')
                 else:
-                    bosssay = battlefont.render(bossphrasesF[-1], True, 'white')
+                    bosssay = battlefont.render(
+                        bossphrasesF[-1], True, 'white')
         screen.blit(background, (bkgx, bkgy))  # фон
 
         # текстуры
@@ -625,7 +659,8 @@ def fight(
         if (battlechoose == 1 and choosefase == 0 and attacktry == 1) or (choosefase == 0 and actend == 1):
             screen.blit(fightingwindow, (fightingwindowx, fightingwindowy))
         if battlechoose == 1 and choosefase == 0 and attacktry == 0 and actcount < 4:
-            screen.blit(attackblackwindow, (battlewindowx1 + 100, battlewindowy1 + 10))
+            screen.blit(attackblackwindow,
+                        (battlewindowx1 + 100, battlewindowy1 + 10))
         if choosefase == 1 or actcount == 4:
             screen.blit(bosssay, (400, 100))
         if actchoose == 1 and actend == 0 and actcount < len(rightact):
@@ -634,7 +669,7 @@ def fight(
             screen.blit(actleft, (200, 500))
             screen.blit(actright, (600, 500))
 
-        #admin buttons
+        # admin buttons
         if pressed[pygame.K_z] and pressed[pygame.K_b]:
             bosshp -= 10
         if pressed[pygame.K_z] and pressed[pygame.K_p]:
@@ -642,10 +677,14 @@ def fight(
 
         screen.blit(fightingplayer, (px, py))
         # тексты на кнопках:
-        screen.blit((myfont.render('BATTLE', True, 'white')), (xplayer + 30, yplayer))
-        screen.blit((myfont.render('ACT', True, 'white')), (xplayer + 230, yplayer))
-        screen.blit((myfont.render('ITEM', True, 'white')), (xplayer + 430, yplayer))
-        screen.blit((myfont.render('FLEE', True, 'white')), (xplayer + 630, yplayer))
+        screen.blit((myfont.render('BATTLE', True, 'white')),
+                    (xplayer + 30, yplayer))
+        screen.blit((myfont.render('ACT', True, 'white')),
+                    (xplayer + 230, yplayer))
+        screen.blit((myfont.render('ITEM', True, 'white')),
+                    (xplayer + 430, yplayer))
+        screen.blit((myfont.render('FLEE', True, 'white')),
+                    (xplayer + 630, yplayer))
         screen.blit(bossanim[bossflag], (400, 200))
         # хп босса и игрока
         screen.blit((myfont.render('BOSS HP', True, 'Purple')), (100, 200))
@@ -662,7 +701,7 @@ def fight(
                 running = False
 
 
-###############################^^^^^ПОДПРОГРАММА НА БОИ^^^^^################################################################
+############################### ^^^^^ПОДПРОГРАММА НА БОИ^^^^^################################################################
 
 
 running = True
@@ -674,9 +713,9 @@ while running:
 
     boss1_rect = pygame.Rect(xboss1, yboss1, 40, 40)
 
-    boss2_rect = pygame.Rect(xboss2,yboss2,40,40)
+    boss2_rect = pygame.Rect(xboss2, yboss2, 40, 40)
 
-    boss3_rect = pygame.Rect(xboss3,yboss3,40,40)
+    boss3_rect = pygame.Rect(xboss3, yboss3, 40, 40)
 
     pressed = pygame.key.get_pressed()
 
@@ -715,12 +754,11 @@ while running:
         player = pwalkdown[animn]
         direction = 3
     if pressed[pygame.K_LEFT] == 0 and pressed[pygame.K_RIGHT] == 0 and pressed[pygame.K_UP] == 0 and pressed[
-        pygame.K_DOWN] == 0:
+            pygame.K_DOWN] == 0:
         player = pidle[direction]
 
     if boss1_flag == None:
         boss1_flag = 0
-
 
     pygame.draw.rect(background_shirm, 'white', boss1_rect)
 
@@ -729,18 +767,16 @@ while running:
 
     screen.blit(background, (xbackground, ybackground))
     screen.blit(boss1menu[boss1_flag], (xboss1, yboss1))
-    screen.blit(boss2menu[boss2_flag],(xboss2,yboss2))
+    screen.blit(boss2menu[boss2_flag], (xboss2, yboss2))
     screen.blit(boss3menu[boss3_flag], (xboss3, yboss3))
     screen.blit(player, (px, py))
 
-    #проверка, чтобы музыка не менялась постоянно
-    if bosshappyflags!=bosshappyflags_check or bosssadflags!=bosssadflags_check:
-        musicsetter(bosshappyflags,bosssadflags)
+    # проверка, чтобы музыка не менялась постоянно
+    if bosshappyflags != bosshappyflags_check or bosssadflags != bosssadflags_check:
+        musicsetter(bosshappyflags, bosssadflags)
 
     bosshappyflags_check = bosshappyflags
     bosssadflags_check = bosssadflags
-
-
 
     if player_rect.colliderect(boss1_rect) == 1 and boss1_flag == 0:
         pressetextx = 30
@@ -759,8 +795,8 @@ while running:
                 pygame.mixer.music.load('Music/mus_menu0.ogg')
                 pygame.mixer.music.play(-1)
     elif player_rect.colliderect(boss1_rect) == 1 and boss1_flag == 1:
-        screen.blit((myfont.render('Hey!',True,'Gray')),(xboss1 + 40,yboss1 - 10))
-
+        screen.blit((myfont.render('Hey!', True, 'Gray')),
+                    (xboss1 + 40, yboss1 - 10))
 
     if player_rect.colliderect(boss2_rect) == 1 and boss2_flag == 0 and boss1_flag != 0:
         pressetextx = 30
@@ -779,7 +815,8 @@ while running:
                 pygame.mixer.music.load('Music/mus_menu0.ogg')
                 pygame.mixer.music.play(-1)
     elif player_rect.colliderect(boss2_rect) == 1 and boss2_flag == 1:
-        screen.blit((myfont.render('THAT RECORD IS FIRE!!!',True,'Gray')),(xboss2 + 40,yboss2 - 10))
+        screen.blit((myfont.render('THAT RECORD IS FIRE!!!',
+                    True, 'Gray')), (xboss2 + 40, yboss2 - 10))
 
     if player_rect.colliderect(boss3_rect) == 1 and boss3_flag == 0 and boss1_flag != 0 and boss2_flag != 0:
         pressetextx = 30
@@ -798,10 +835,10 @@ while running:
                 pygame.mixer.music.load('Music/mus_menu0.ogg')
                 pygame.mixer.music.play(-1)
     elif player_rect.colliderect(boss3_rect) == 1 and boss3_flag == 1:
-        screen.blit((myfont.render('That water was good!',True,'Gray')),(xboss3 + 40,yboss3 - 10))
+        screen.blit((myfont.render('That water was good!',
+                    True, 'Gray')), (xboss3 + 40, yboss3 - 10))
 
-
-    #admin buttons
+    # admin buttons
     if pressed[pygame.K_z] and pressed[pygame.K_1]:
         boss1_flag = 1
         bosshappyflags = 1
@@ -825,14 +862,11 @@ while running:
         boss3_flag = 2
         bosssadflags = 3
     if pressed[pygame.K_z] and pressed[pygame.K_x] and pressed[pygame.K_r]:
-        boss1_flag=0
-        boss2_flag=0
-        boss3_flag=0
-        bosssadflags=0
-        bosshappyflags=0
-
-
-
+        boss1_flag = 0
+        boss2_flag = 0
+        boss3_flag = 0
+        bosssadflags = 0
+        bosshappyflags = 0
 
     ######################## КОНЕЦ КОДА НЕ ЛЕЗЬ ###################################################
     pygame.display.update()
