@@ -243,7 +243,6 @@ myfont = pygame.font.Font('fonts/KdamThmorPro-Regular.ttf', 20)
 textsurface = myfont.render('Press E to start fight', True, 'white', 'black')
 
 
-# временно^^^
 
 def fight(
         boss, startplayerx=fpx, startplayery=fpy, xplayer=fpx, yplayer=fpy,
