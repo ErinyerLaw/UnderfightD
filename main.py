@@ -4,8 +4,9 @@ from random import randint
 
 def attackm(k):
     '''
-
-    :param k: int
+    makes a massive with random attacks
+    :param k: count of attacks neeeded
+    :type k: int
     :return: massive with random x and y for attacks
     '''
     m = []
@@ -18,6 +19,14 @@ def attackm(k):
 
 
 def musicsetter(bosshappyflags, bosssadflags):
+    '''
+    sets the right music
+    :param bosshappyflags: count for the bosses defeated with acting
+    :type bosshappyflags: int
+    :param bosssadflags: count for the bosses defeated with battle
+    :type bosssadflags: int
+    :return:
+    '''
     if bosshappyflags == 0 and bosssadflags == 0:
         pygame.mixer.music.load('Music/mus_menu0.ogg')
         pygame.mixer.music.play(-1)
@@ -43,8 +52,11 @@ def musicsetter(bosshappyflags, bosssadflags):
 
 def fpsset(playerslideflag, choosefase):
     '''
-    :param playerslideflag: bool
-    :param choosefase: bool
+    sets fps for the whole game
+    :param playerslideflag: flag for the player sliding
+    :type playerslideflag: int
+    :param choosefase: flag for choose fase
+    :type choosefase:
     :return: 10 if it is choosefase and playerslideflag is 1; 60 if it isn`t choosefase
     '''
     if playerslideflag == 1 and choosefase == 1:
@@ -59,7 +71,9 @@ def fpsset(playerslideflag, choosefase):
 
 def hp_decor(hp):
     '''
-    :param hp:int
+    Делает так, чтобы хп в минус не уходили
+    :param hp: hp that you need to transform
+    :type hp: int
     :return: hp or 0(if hp is 0 or lower)
     '''
     if hp <= 0:
@@ -69,22 +83,34 @@ def hp_decor(hp):
 
 
 class Boss:
+    '''
+    инициализирует параметры босса
+    :param hp: int hp amount
+    :type hp: int
+    :param anim: with images for boss
+    :type anim: list
+    :param attacks: with lists with two int for x and y realisation
+    :type attacks: list
+    :param phrasesF: tuple with str prhases
+    :type phrasesF: list
+    :param attack: image for boss attack
+    :type attack:
+    :param act: with lists containing bool to understand the right act to choose
+    :type act: list
+    :param actT: with boss answers for right act
+    :type actT: list
+    :param actF: with boss answers for wrong act
+    :type actF: list
+    :param actleft: with player acts displayed on the left
+    :type actleft: list
+    :param actright: with player acts displayed on the right
+    :type actright: list
+    :param attack_speed: speed of base boss attack
+    :type attack_speed: int
+    :param strength: strength of boss attacks
+    :type strength: int
+    '''
     def __init__(self, hp, anim, attacks, phrasesF, attack, act, actT, actF, actleft, actright, attack_speed, strength):
-        '''
-
-        :param hp: int hp amount
-        :param anim: list with images for boss
-        :param attacks: list with lists with two int for x and y realisation
-        :param phrasesF: tuple with str prhases
-        :param attack: image for boss attack
-        :param act: list with lists containing bool to understand the right act to choose
-        :param actT: list with boss answers for right act
-        :param actF: list with boss answers for wrong act
-        :param actleft: list with player acts displayed on the left
-        :param actright: list with player acts displayed on the right
-        :param attack_speed: int speed of base boss attack
-        :param strength: int strength of boss attacks
-        '''
         self.hp = hp
         self.anim = anim
         self.attacks = attacks
@@ -259,22 +285,35 @@ textsurface = myfont.render('Press E to start fight', True, 'white', 'black')
 def fight(
         boss, startplayerx=fpx, startplayery=fpy, xplayer=fpx, yplayer=fpy,
         myfont=myfont, px=px, py=py,
-        bkgx=xbackground, bkgy=ybackground, FPS=FPS, screenx=screenx, screeny=screeny):
+        bkgx=xbackground, bkgy=ybackground, FPS = FPS, screenx=screenx, screeny=screeny):
     '''
-
-    :param boss: class
-    :param startplayerx: int
-    :param startplayery: int
-    :param xplayer: int
-    :param yplayer: int
-    :param myfont: pygame.font
-    :param px: int
-    :param py: int
-    :param bkgx: int
-    :param bkgy: int
-    :param FPS: int
-    :param screenx: int
-    :param screeny: int
+    Начинает бой с указанным боссом
+    :param boss: with boss params
+    :type boss: class
+    :param startplayerx: player starting x
+    :type startplayerx: int
+    :param startplayery: player starting y
+    :type startplayery: int
+    :param xplayer: x of the place where player was before the fight
+    :type xplayer: int
+    :param yplayer: y of the place where player was before the fight
+    :type yplayer: int
+    :param myfont: font for the text
+    :type myfont:
+    :param px: x of the player, when the fight is over
+    :type px: int
+    :param py: x of the player, when the fight is over
+    :type py: int
+    :param bkgx: x of the background
+    :type bkgx: int
+    :param bkgy: y of the backbround
+    :type bkgy: int
+    :param FPS: fps of the game
+    :type FPS: int
+    :param screenx: x for the screen
+    :type screenx: int
+    :param screeny: y for the screen
+    :type screeny: int
     :return: 0,1 or 2 depending on how fight ends
     '''
     screen = pygame.display.set_mode((screenx, screeny))
@@ -299,9 +338,6 @@ def fight(
     fightingwindowy = battlewindowy1 + 25
     battlechoose = 0
     attacktry = 0
-    actchoose = 0
-    itemchoose = 0
-    quitchoose = 0
     oncetp = 0
     bossflag = 0
     start_tp = 0
@@ -318,7 +354,6 @@ def fight(
     battlecount = 0
     attackmove = 0
     bossphrasesF = boss.phrasesF
-    phrasechange = 0
     attackcooldown = 0
     attackcooldownk = 100
     _attackmovespeed = boss.attack_speed
@@ -631,6 +666,7 @@ def fight(
             if pygame.Rect.colliderect(playerhitbox, actbutton) and pressed[pygame.K_e]:
                 actchoose = 1
                 choosefase = 0
+            #если захочу добавить меню предметов
             '''if pygame.Rect.colliderect(playerhitbox,itembutton) and pressed[pygame.K_e]:
                 itemchoose = 1
                 choosefase = 0'''
