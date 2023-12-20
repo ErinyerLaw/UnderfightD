@@ -110,6 +110,7 @@ class Boss:
     :param strength: strength of boss attacks
     :type strength: int
     '''
+
     def __init__(self, hp, anim, attacks, phrasesF, attack, act, actT, actF, actleft, actright, attack_speed, strength):
         self.hp = hp
         self.anim = anim
@@ -285,7 +286,7 @@ textsurface = myfont.render('Press E to start fight', True, 'white', 'black')
 def fight(
         boss, startplayerx=fpx, startplayery=fpy, xplayer=fpx, yplayer=fpy,
         myfont=myfont, px=px, py=py,
-        bkgx=xbackground, bkgy=ybackground, FPS = FPS, screenx=screenx, screeny=screeny):
+        bkgx=xbackground, bkgy=ybackground, FPS=FPS, screenx=screenx, screeny=screeny):
     '''
     Начинает бой с указанным боссом
     :param boss: with boss params
@@ -666,7 +667,7 @@ def fight(
             if pygame.Rect.colliderect(playerhitbox, actbutton) and pressed[pygame.K_e]:
                 actchoose = 1
                 choosefase = 0
-            #если захочу добавить меню предметов
+            # если захочу добавить меню предметов
             '''if pygame.Rect.colliderect(playerhitbox,itembutton) and pressed[pygame.K_e]:
                 itemchoose = 1
                 choosefase = 0'''
